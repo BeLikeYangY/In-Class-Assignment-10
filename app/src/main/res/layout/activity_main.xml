@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.android.inclassassignment10.MainActivity"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <Button
+        android:id="@+id/object"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Object"
+        android:onClick="toActivity"/>
+
+    <Button
+        android:id="@+id/list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="List"
+        android:onClick="toActivity"/>
+
+    <Button
+        android:id="@+id/camera"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Camera"
+        android:onClick="toActivity"/>
+
+    <Button
+        android:id="@+id/storage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Storage"
+        android:onClick="toActivity"/>
+</LinearLayout>
