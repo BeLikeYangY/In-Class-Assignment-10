@@ -2,6 +2,8 @@ package com.example.android.inclassassignment10;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,6 +26,10 @@ public class ListActivity extends AppCompatActivity {
     DatabaseReference postRef;
     ArrayList<BlogPost> posts;
 
+    private RecyclerView mRecyclerView;
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager mLayoutManager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +42,21 @@ public class ListActivity extends AppCompatActivity {
 
         posts = new ArrayList<>();
 
-        display = (TextView)findViewById(R.id.displayList);
+//        display = (TextView)findViewById(R.id.displayList);
+
+        mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
+
+        // use this setting to improve performance if you know that changes
+        // in content do not change the layout size of the RecyclerView
+        mRecyclerView.setHasFixedSize(true);
+
+        // use a linear layout manager
+        mLayoutManager = new LinearLayoutManager(this);
+        mRecyclerView.setLayoutManager(mLayoutManager);
+
+        // specify an adapter (see also next example)
+        mAdapter = new MyAdapter(posts);
+        mRecyclerView.setAdapter(mAdapter);
 
         postsRef.addChildEventListener(new ChildEventListener() {
             @Override
@@ -48,7 +68,7 @@ public class ListActivity extends AppCompatActivity {
                 for (BlogPost p:posts){
                     results += p + "\n";
                 }
-                display.setText(results);
+                mAdapter.notifyDataSetChanged();
             }
 
             @Override
@@ -71,6 +91,6 @@ public class ListActivity extends AppCompatActivity {
 
             }
         });
-        display.setVisibility(View.VISIBLE);
+//        display.setVisibility(View.VISIBLE);
     }
 }
